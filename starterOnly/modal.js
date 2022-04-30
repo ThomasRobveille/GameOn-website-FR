@@ -60,16 +60,24 @@ function testData() {
   if(CGU == "on"){
     Person.cgu = true;
   }
+  else {
+    Person.cgu = false
+  }
 
-  let newsLetter = document.querySelector('#checkbox2:checked'.value)
+  let newsLetter = document.querySelector('#checkbox2:checked').value
   if(newsLetter == "on"){
     Person.newsletter = true
   }
-
+  else {
+    Person.newsletter = false
+  }
   alert("bravo c'est un succès")
+  console.log(Person);
+  console.log(Person.city);
+  console.log(Person.cgu);
   console.log(Person.newsletter);
 }
- // Regex
+ // Regex pour vérifier que le nom soit sans chiffre
 function isValid(value){
   if(/[a-z]+/g.test(value)){
     return true
