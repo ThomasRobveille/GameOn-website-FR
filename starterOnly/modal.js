@@ -47,30 +47,38 @@ function testData() {
     } else if(formData[i].id === "email"){
       Person.email = formData[i].value
     } else if(formData[i].id === "birthdate"){
-      Person.birthdate = formData[i].value
+      if(dateValid(formData[i].valueAsNumber)){
+        Person.birthdate = formData[i].value
+      } else {
+        return alert("cette date est dans le future")
+      }      
     } else if(formData[i].id === "quantity"){
       Person.quantity = formData[i].value
     }
   }
 
   let city = document.querySelector('input[name="location"]:checked').value;
-  Person.city = city
+  if(!document.querySelector('input[name="location"]:checked')){
+    return alert("veuillez sélectionner une ville")
+  }
+  else{
+    Person.city = city
+  }
 
-  let CGU = document.querySelector('#checkbox1:checked').value
-  if(CGU == "on"){
+  if(document.getElementById('checkbox1').checked){
     Person.cgu = true;
   }
   else {
-    Person.cgu = false
+    alert("veuillez accepter les CGU")
   }
 
-  let newsLetter = document.querySelector('#checkbox2:checked').value
-  if(newsLetter == "on"){
+  if(document.getElementById('checkbox2').checked){
     Person.newsletter = true
   }
   else {
     Person.newsletter = false
   }
+
   alert("bravo c'est un succès")
   console.log(Person);
   console.log(Person.city);
@@ -82,4 +90,15 @@ function isValid(value){
   if(/[a-z]+/g.test(value)){
     return true
   }
+}
+
+//fonction de test de date
+function dateValid(value){
+  console.log(value)
+  console.log(Date.now())
+  if(value < Date.now()){
+    return true
+  } else {
+    return false
+  }  
 }
