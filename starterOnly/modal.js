@@ -40,21 +40,21 @@ function testData() {
         return alert("le prénom ne peut contenir des chiffres")
       }
     } else if(formData[i].id === "last"){
-      if(isValid(formData[i].value)){
-        Person.last = formData[i].value
-      } else{
-        saveData()
-        return alert("le nom ne peut contenir des chiffres")
-      }
+        if(isValid(formData[i].value)){
+          Person.last = formData[i].value
+        } else{
+          saveData()
+          return alert("le nom ne peut contenir des chiffres")
+        }
     } else if(formData[i].id === "email"){
       Person.email = formData[i].value
     } else if(formData[i].id === "birthdate"){
-      if(dateValid(formData[i].valueAsNumber)){
-        Person.birthdate = formData[i].value
-      } else {
-        saveData()
-        return alert("cette date est dans le future")
-      }      
+        if(dateValid(formData[i].valueAsNumber)){
+          Person.birthdate = formData[i].value
+        } else {
+          saveData()
+          return alert("cette date est dans le future")
+        }      
     } else if(formData[i].id === "quantity"){
       Person.quantity = formData[i].value
     }
@@ -164,7 +164,19 @@ function setForm(){
   }
 
   let city = Session.getItem('city')
-  document.querySelector("input[value='" + city +"']:checked").checked = true
+  if(city == "New York"){
+    document.getElementById('location1').checked = true
+  } else if (city == "San Francisco") {
+    document.getElementById('location2').checked = true
+  } else if (city == "Seattle") {
+    document.getElementById('location3').checked = true
+  } else if (city == "Chicago") {
+    document.getElementById('location4').checked = true
+  } else if (city == "Boston") {
+    document.getElementById('location5').checked = true
+  } else if (city == "Portland") {
+    document.getElementById('location6').checked = true
+  }
 
   if(Session.getItem('cgu')){
     document.getElementById('checkbox1').checked = true
