@@ -74,6 +74,25 @@ img {
   border: 2px solid #ff0000;
 }
 
+#successMessage{
+  display: none;
+  flex-direction: column;
+  align-items: center;
+}
+
+#successMessage p{
+  margin: 200px 0;
+}
+
+#closeButton{
+  background-color: #ff0000;
+  color: white;
+  font-family: var(--font-default);
+  width: 182px;
+  height: 40px;
+  border-radius:8px;
+}
+
 @media screen and (max-width: 768px) {
   .topnav a {display: none;}
   .topnav a.icon {
@@ -103,7 +122,6 @@ img {
   .topnav a.icon {
     float: right;
     display: block;
-    margin-top: -15px;
   }
 } 
 

@@ -12,6 +12,7 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.getElementsByClassName("text-control");
 const modalClose = document.querySelector("#close");
+const SMessage = document.getElementById('successMessage');
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -21,12 +22,28 @@ modalClose.onclick = closeModal;
 // launch modal form
 function launchModal() {
   modalbg.style.display = "block";
+  form.style.display = "block";
+  SMessage.style.display = "none";
 }
 
 // Ferme la modal au click sur la croix
 function closeModal() {
   modalbg.style.display = "none";
+  SMessage.style.display = "none";
 }
+
+//Prevention du rechargement de page
+const form = document.getElementById('form');
+form.addEventListener('submit', function(e){
+  e.preventDefault()
+});
+
+//Affichage du message de remerciment
+function successMessage(){
+  form.style.display = "none";
+  SMessage.style.display = "flex";
+}
+
 
 // Form answer 
 function testData() {
@@ -84,7 +101,7 @@ function testData() {
     Person.newsletter = false
   }
 
-  alert("bravo c'est un succès")
+  successMessage();
   console.log(Person);
   console.log(Person.city);
   console.log(Person.cgu);
